@@ -1,9 +1,21 @@
 import { DownloadIcon, GlobeAltIcon } from '@heroicons/react/outline'
 import React from 'react'
+import { auth, provider } from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useHistory } from 'react-router'
 import heroImg1 from '../assests/heroImg1.png'
 import heroImg2 from '../assests/heroImg2.png'
 
 function Hero() {
+	const history = useHistory()
+	const [user] = useAuthState(auth)
+
+	const signIn = (e) => {
+		e.preventDefault() // stop default page refresh
+		auth.signInWithPopup(provider)
+			.then(() => history.push('/channels'))
+			.catch((error) => alert(error.message))
+	}
 	return (
 		<div className='bg-discord_blue pb-8 lg:pb-0'>
 			<div className='p-7 py-9 h-87vh md:flex relative lg:justify-center'>
@@ -32,6 +44,9 @@ function Hero() {
 							className='bg-gray-900 text-white w-60 font-medium flex items-center justify-center 
             rounded-full p-4 hover:bg-gray-800 hover:shadow-lg text-lg
             focus:outline-none transition ease-in-out duration-500 z-10'
+							onClick={
+								!user ? signIn : () => history.push('/channels')
+							}
 						>
 							<GlobeAltIcon className='w-6 mr-2' />
 							Open on browser

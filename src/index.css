@@ -7,4 +7,13 @@
 	.link {
 		@apply cursor-pointer font-semibold text-white hover:underline;
 	}
+	.server-default {
+		@apply h-12 bg-discord_serverBg rounded-full flex justify-center items-center
+		cursor-pointer transition-all duration-150 ease-out;
+	}
+	.icons {
+		@apply h-10 text-gray-400 ml-3 p-2
+               hover:bg-discord_channelHover rounded-full
+               hover:text-white;
+	}
 }

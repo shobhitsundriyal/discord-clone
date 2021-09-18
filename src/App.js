@@ -3,6 +3,7 @@ import Header from './componets/Header'
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Hero from './componets/Hero'
+import Home from './componets/Home'
 
 function App() {
 	return (
@@ -16,7 +17,12 @@ function App() {
 						<Header />
 						<Hero />
 					</Route>
-					<Route path='/channels'>{/* add channel here */}</Route>
+					<Route path='/channels'>
+						<Home />
+					</Route>
+					<Route path='/channels/:id'>
+						<Home />
+					</Route>
 				</Switch>
 			</Router>
 		</div>
