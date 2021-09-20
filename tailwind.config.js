@@ -24,6 +24,13 @@ module.exports = {
 			height: {
 				'87vh': '87vh',
 			},
+			width: {
+				'100vh': '87vh',
+			},
+			inset: {
+				'-16': '-9rem',
+				'-12': '-7rem',
+			},
 		},
 	},
 	variants: {
